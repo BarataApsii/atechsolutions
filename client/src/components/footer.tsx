@@ -25,7 +25,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="md:col-span-1">
             <h3 className="text-2xl font-bold mb-4">NextDev Solutions</h3>
-            <p className="text-sm text-slate-300 mb-6 max-w-md">
+            <p className="text-base text-slate-300 mb-6 max-w-md">
               We are eager to help small businesses and organizations with web development, ERP systems, IT support, and custom software solutions for businesses and organisations of every size.
             </p>
             <div className="flex space-x-4">
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="hover:text-white transition-colors text-sm"
+                    className="hover:text-white transition-colors text-base"
                   >
                     {link.label}
                   </Link>
@@ -71,7 +71,7 @@ export default function Footer() {
                 <li key={service}>
                   <Link
                     to="/services"
-                    className="hover:text-white transition-colors text-sm text-left"
+                    className="hover:text-white transition-colors text-base text-left"
                   >
                     {service}
                   </Link>
@@ -90,7 +90,7 @@ export default function Footer() {
                   href="https://wa.me/67571570096"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors text-sm"
+                  className="hover:text-white transition-colors text-base"
                 >
                   +67571570096
                 </a>
@@ -99,12 +99,12 @@ export default function Footer() {
                 <Mail className="mr-2 h-4 w-4 shrink-0" />
                 <a
                   href="mailto:info@nextdev-png.com"
-                  className="hover:text-white transition-colors text-sm"
+                  className="hover:text-white transition-colors text-base"
                 >
                   info@nextdev-png.com
                 </a>
               </li>
-              <li className="text-sm">
+              <li className="text-base">
                 <p className="font-medium">Mon–Fri: 8AM–6PM</p>
                 <p className="font-medium">Sun: Appointment Only</p>
               </li>
@@ -113,7 +113,7 @@ export default function Footer() {
         </div>
 
         {/* Footer Bottom */}
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm gap-4">
+        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-base gap-4">
           <p>&copy; 2026 NextDev Solutions. All rights reserved.</p>
           <div className="flex gap-6">
             <Link to="/services" className="hover:text-white transition-colors">Services</Link>
