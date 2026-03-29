@@ -35,10 +35,12 @@ export default function HeroSection() {
   }, [slides.length]);
 
   const nextSlide = () => {
+    console.log('Next slide clicked, current:', currentSlide);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
+    console.log('Prev slide clicked, current:', currentSlide);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
@@ -113,10 +115,10 @@ export default function HeroSection() {
             </div>
 
             {/* Slider Controls */}
-            <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-2">
+            <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-2 relative z-20">
               <button
                 onClick={prevSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer relative z-30"
                 aria-label="Previous slide"
               >
                 <ArrowLeft className="h-5 w-5" />
@@ -127,7 +129,7 @@ export default function HeroSection() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
+                    className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all cursor-pointer relative z-30 ${
                       index === currentSlide 
                         ? 'bg-yellow-300 w-6 sm:w-8' 
                         : 'bg-white/50 hover:bg-white/70'
@@ -139,7 +141,7 @@ export default function HeroSection() {
               
               <button
                 onClick={nextSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer relative z-30"
                 aria-label="Next slide"
               >
                 <ArrowRight className="h-5 w-5" />
