@@ -10,11 +10,11 @@ export default function HeroSection() {
     {
       title: "Transform Your Business Digitally",
       subtitle: "Custom web solutions that drive growth and innovation",
-      description: "NextDev Solutions craftsweb applications that elevate your business presence and streamline operations.",
+      description: "NextDev Solutions crafts applications that elevate your business operations.",
       image: "/asset/hero-slider-images/transform-business.png"
     },
     {
-      title: "Streamline Operations with Smart ERP",
+      title: "ERP Software Solutions",
       subtitle: "Integrated solutions for efficient business management",
       description: "Our ERP systems unify your processes, from inventory to finance, giving you complete control and visibility.",
       image: "/asset/hero-slider-images/custom-software.png"
