@@ -217,7 +217,7 @@ export default function ServicesPage() {
                   WhatsApp Us
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8">
+              <Button asChild size="lg" variant="outline" className="border-white text-gray-700 hover:bg-white hover:text-blue-600 px-8">
                 <Link to="/contact">
                   Send an Enquiry
                 </Link>
