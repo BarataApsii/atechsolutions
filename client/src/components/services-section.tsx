@@ -1,11 +1,12 @@
 import {
   Building,
   Code,
-  Plane,
   Wrench,
   Computer,
   Server,
+  ArrowRight,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card } from "./ui/card";
 
 const services = [
@@ -24,20 +25,6 @@ const services = [
     bgColor: "bg-blue-600",
   },
   {
-    icon: Wrench,
-    title: "Website Updates & Support",
-    description: "Updating existing websites and support",
-    features: [
-      "Performance Optimization",
-      "Security Updates",
-      "Content Management",
-      "Bug Fixes & Patches",
-      "Regular Backups",
-      "24/7 Support",
-    ],
-    bgColor: "bg-green-600",
-  },
-  {
     icon: Computer,
     title: "Computer Hardware & Software",
     description: "Installation, configuration and troubleshooting",
@@ -49,34 +36,7 @@ const services = [
       "Data Migration",
       "Security Configuration",
     ],
-    bgColor: "bg-blue-600",
-  },
-  {
-    icon: Server,
-    title: "Website Hosting Consultation",
-    description: "Guidance on website hosting solutions",
-    features: [
-      "Hosting Provider Analysis",
-      "Performance Assessment",
-      "Cost-Benefit Analysis",
-      "Security Recommendations",
-      "Setup Configuration",
-      "Ongoing Support",
-    ],
-    bgColor: "bg-green-600",
-  },
-  {
-    icon: Plane,
-    title: "Airline Ticketing Solutions",
-    description: "Comprehensive airline ticketing and reservation",
-    features: [
-      "Global Ticket Booking",
-      "Any Airline, Anytime",
-      "24/7 Booking Support",
-      "Group & Corporate Bookings",
-      "Last-Minute Bookings",
-    ],
-    bgColor: "bg-blue-600",
+    bgColor: "bg-purple-600",
   },
   {
     icon: Building,
@@ -98,40 +58,84 @@ export function ServicesSection() {
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">Our Services</h2>
 
-        {/* Grid with consistent card heights */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6 items-stretch">
+        {/* Modern gradient cards with hover effects - showing 3 key services */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
-            <div key={index} className="h-full">
-              <Card className={`relative h-full flex flex-col justify-between overflow-hidden rounded-lg ${service.bgColor}`}>
-                {/* Overlay for better text contrast */}
-                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
-                <div className="relative p-4 flex flex-col h-full">
-                  {/* Icon */}
-                  <service.icon className="w-12 h-12 text-white mb-4" />
+            <div key={index} className="group">
+              <div className={`relative h-full bg-gradient-to-br ${
+                service.bgColor === "bg-blue-600" 
+                  ? "from-blue-500 via-blue-600 to-indigo-700" 
+                  : service.bgColor === "bg-purple-600"
+                  ? "from-purple-500 via-purple-600 to-purple-700"
+                  : "from-green-500 via-green-600 to-emerald-700"
+              } rounded-2xl p-1 transition-all duration-300 hover:scale-105 hover:shadow-2xl`}>
+                <div className="bg-white rounded-2xl h-full p-5 flex flex-col">
+                  {/* Icon with animated background */}
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${
+                    service.bgColor === "bg-blue-600" 
+                      ? "bg-gradient-to-br from-blue-100 to-blue-200" 
+                      : service.bgColor === "bg-purple-600"
+                      ? "bg-gradient-to-br from-purple-100 to-purple-200"
+                      : "bg-gradient-to-br from-green-100 to-green-200"
+                  } mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <service.icon className={`w-6 h-6 ${
+                      service.bgColor === "bg-blue-600" ? "text-blue-600" : 
+                      service.bgColor === "bg-purple-600" ? "text-purple-600" :
+                      "text-green-600"
+                    }`} />
+                  </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
-                  <p className="text-white/80 mb-3">{service.description}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4 flex-grow">{service.description}</p>
 
-                  {/* Feature list */}
-                  <ul
-                    className={`${
-                      service.twoColumnFeatures
-                        ? "grid grid-cols-2 gap-x-3"
-                        : "space-y-2"
-                    } text-white/70 flex-grow`}
-                  >
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <span className="text-sm mr-2">•</span>
-                        <span className="text-xs sm:text-sm md:text-base">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Feature list - limited to 3 items */}
+                  <div className="space-y-2">
+                    <ul className="space-y-1">
+                      {service.features.slice(0, 3).map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-xs text-gray-600">
+                          <div className={`w-1 h-1 rounded-full ${
+                            service.bgColor === "bg-blue-600" ? "bg-blue-500" : 
+                            service.bgColor === "bg-purple-600" ? "bg-purple-500" :
+                            "bg-green-500"
+                          } mr-2`} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    {service.features.length > 3 && (
+                      <p className="text-xs text-gray-500 italic">+{service.features.length - 3} more features</p>
+                    )}
+                  </div>
+
+                  {/* Hover indicator */}
+                  <div className={`mt-4 pt-3 border-t border-gray-100 flex items-center justify-center text-xs font-medium ${
+                    service.bgColor === "bg-blue-600" ? "text-blue-600" : 
+                    service.bgColor === "bg-purple-600" ? "text-purple-600" :
+                    "text-green-600"
+                  } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                    Learn more →
+                  </div>
                 </div>
-              </Card>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* See More Services CTA */}
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-blue-100">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Discover All Our Services</h3>
+              <p className="text-sm text-gray-600 mb-4">From custom ERP solutions to expert IT support - we've got you covered</p>
+              <Link 
+                to="/services"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:shadow-lg"
+              >
+                See All Services <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </section>
