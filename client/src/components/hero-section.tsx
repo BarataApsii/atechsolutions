@@ -47,7 +47,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section id="hero" className="text-white relative overflow-hidden h-[70vh]">
+    <section id="hero" className="text-white relative overflow-hidden h-[70vh] sm:h-[75vh]">
       {/* Background Image Slider */}
       <div className="absolute inset-0">
         {slides.map((slide, index) => (
@@ -62,7 +62,7 @@ export default function HeroSection() {
           />
         ))}
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="flex items-center h-full">
           <div className="relative max-w-2xl">
             {slides.map((slide, index) => (
@@ -72,24 +72,24 @@ export default function HeroSection() {
                   index === currentSlide ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'
                 }`}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 sm:mb-4">
                   {slide.title}
                 </h1>
-                <p className="text-2xl text-yellow-300 mb-4">
+                <p className="text-xl sm:text-2xl text-yellow-300 mb-3 sm:mb-4">
                   {slide.subtitle}
                 </p>
-                <p className="text-lg mb-8 opacity-90">
+                <p className="text-base sm:text-lg mb-6 sm:mb-8 opacity-90">
                   {slide.description}
                 </p>
               </div>
             ))}
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
               <Button
                 asChild
                 variant="outline"
                 size="lg"
-                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-8 py-3"
+                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base"
               >
                 <Link to="/contact">
                   <Phone className="mr-2 h-5 w-5" />
@@ -101,7 +101,7 @@ export default function HeroSection() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-8 py-3"
+                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base"
               >
                 <Link to="/services">
                   <ArrowRight className="mr-2 h-5 w-5" />
@@ -111,7 +111,7 @@ export default function HeroSection() {
             </div>
 
             {/* Slider Controls */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-2">
               <button
                 onClick={prevSlide}
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
@@ -125,9 +125,9 @@ export default function HeroSection() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
+                    className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all ${
                       index === currentSlide 
-                        ? 'bg-yellow-300 w-8' 
+                        ? 'bg-yellow-300 w-6 sm:w-8' 
                         : 'bg-white/50 hover:bg-white/70'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
