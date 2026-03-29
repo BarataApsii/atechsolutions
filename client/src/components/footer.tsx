@@ -24,7 +24,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-1">
-            <h3 className="text-2xl font-bold mb-4">NextDev Solutions</h3>
+            <Link to="/" className="block">
+              <h3 className="text-2xl font-bold mb-4 hover:text-blue-400 transition-colors cursor-pointer">NextDev Solutions</h3>
+            </Link>
             <p className="text-base text-slate-300 mb-6 max-w-md">
               We are eager to help small businesses and organizations with web development, ERP systems, IT support, and custom software solutions for businesses and organisations of every size.
             </p>
