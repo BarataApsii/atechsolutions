@@ -88,7 +88,7 @@ export default function HeroSection() {
               </div>
             ))}
             
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 relative z-30">
               <Button
                 asChild
                 variant="outline"
