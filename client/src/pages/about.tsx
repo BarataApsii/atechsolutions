@@ -161,12 +161,12 @@ export default function AboutPage() {
               {values.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="text-center">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${item.color} mb-6`}>
+                  <div key={item.title}>
+                    <div className={`flex items-center justify-center w-16 h-16 rounded-xl ${item.color} mb-6 mx-auto`}>
                       <Icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
-                    <p className="text-slate-600 text-lg leading-relaxed">{item.description}</p>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4 text-left">{item.title}</h3>
+                    <p className="text-slate-600 text-lg leading-relaxed text-left">{item.description}</p>
                   </div>
                 );
               })}
