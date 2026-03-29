@@ -78,8 +78,19 @@ export default function AboutPage() {
       <Navigation />
       <main>
         {/* Page Hero */}
-        <section className="bg-gradient-to-br from-blue-600 to-blue-700 text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="relative text-white py-16">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: 'url("/asset/image/banner.png")'
+            }}
+          />
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-blue-700/40" />
+          
+          {/* Content */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-sm text-blue-200 mb-3 flex items-center gap-2">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
@@ -87,7 +98,7 @@ export default function AboutPage() {
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">About NextDev Solutions</h1>
             <p className="text-xl text-blue-100 max-w-3xl">
-              A technology company born in Papua New Guinea with a global mindset — dedicated to transforming ideas into real-world digital solutions.
+              A technology company born in Papua New Guinea with a global mindset dedicated to transforming ideas into real-world digital solutions.
             </p>
           </div>
         </section>
@@ -98,9 +109,9 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <img
-                  src="/asset/image/apsie.jpg"
+                  src="/asset/image/apsie-tese.png"
                   alt="Apsie Tese, Founder of NextDev Solutions"
-                  className="rounded-2xl shadow-xl w-full h-auto object-cover aspect-[4/3]"
+                  className="rounded-2xl shadow-xl w-3/4 h-auto object-cover aspect-[3/4] mx-auto"
                 />
               </div>
               <div>
@@ -110,13 +121,13 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-4 text-slate-600 leading-relaxed">
                   <p>
-                    NextDev Solutions was founded by <strong>Apsie Tese</strong> in June 2025 with a clear mission: to deliver innovative, reliable, and efficient software solutions that empower businesses and individuals alike.
+                    NextDev Solutions was founded by <strong>Apsie Tese</strong> in June 2025, starting as a solo developer driven by passion with a clear mission: to deliver innovative, reliable, and efficient software solutions that empower businesses and individuals alike.
                   </p>
                   <p>
-                    What started as a passion project has evolved into a digital development initiative dedicated to transforming ideas into real-world applications. We believe that great software begins with great people — and every project we take on receives the same level of care, collaboration, and creativity.
+                    What started as a passion project has evolved into a digital development initiative dedicated to transforming ideas into real-world applications. We believe that great software begins with great people and every project we take on receives the same level of care, collaboration, and creativity.
                   </p>
                   <p>
-                    Our goal is not only to build functional systems but also to create digital experiences that are intuitive, secure, and scalable — solutions that grow with your business.
+                    Our goal is not only to build functional systems but also to create digital experiences that are intuitive, secure, and scalable solutions that grow with your business.
                   </p>
                   <p>
                     Thank you for taking the time to get to know us. We look forward to building something amazing together.
@@ -150,12 +161,12 @@ export default function AboutPage() {
               {values.map((item) => {
                 const Icon = item.icon;
                 return (
-                  <div key={item.title} className="bg-slate-50 rounded-2xl p-8 text-center">
-                    <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${item.color} mb-5`}>
-                      <Icon className="h-7 w-7 text-white" />
+                  <div key={item.title} className="text-center">
+                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl ${item.color} mb-6`}>
+                      <Icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-4">{item.title}</h3>
+                    <p className="text-slate-600 text-lg leading-relaxed">{item.description}</p>
                   </div>
                 );
               })}

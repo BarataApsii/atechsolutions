@@ -6,10 +6,12 @@ import BackToTop from "../components/back-to-top";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
 import { ServicesSection } from "../components/services-section";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../components/ui/collapsible";
+import { useState } from "react";
 import {
   Code, Wrench, Computer, Server, Building,
   ArrowRight, Users, Clock, Headphones, Calendar,
-  Cpu, Award, MessageCircle, Mail, CheckCircle,
+  Cpu, Award, MessageCircle, Mail, CheckCircle, ChevronDown,
 } from "lucide-react";
 
 const serviceHighlights = [
@@ -24,7 +26,6 @@ const whyUs = [
   { icon: Users, title: "Fresh Perspective", desc: "Modern approaches and genuine enthusiasm for your project." },
   { icon: Clock, title: "Dedicated Service", desc: "On-time delivery with quality results every single time." },
   { icon: Headphones, title: "Personal Attention", desc: "You're not a ticket number — you get our full focus." },
-  { icon: CheckCircle, title: "Transparent Pricing", desc: "Clear quotes upfront, no hidden fees, no surprises." },
 ];
 
 const latestNews = [
@@ -68,53 +69,135 @@ export default function Home() {
         {/* Hero */}
         <HeroSection />
 
+        {/* Section Divider */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+        </div>
+
         {/* Services Overview */}
         <ServicesSection />
 
-        {/* About Teaser */}
-        <section className="py-20 bg-slate-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <img
-                  src="/asset/image/apsie.jpg"
-                  alt="Apsie Tese, Founder of NextDev Solutions"
-                  className="rounded-2xl shadow-xl w-full h-auto object-cover aspect-[4/3]"
-                />
+        {/* Section Divider */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+        </div>
+
+        {/* About Section */}
+        <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
+          {/* Background Pattern */}
+          <div className="absolute inset-0 opacity-5">
+            <div className="absolute inset-0" style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, rgb(59, 130, 246) 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
+                About Our Company
+              </span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                Building Digital Excellence
+              </h2>
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                Founded in 2025, we're transforming businesses through innovative technology solutions 
+                with a commitment to quality, integrity, and client success.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start relative">
+              {/* Vertical Divider */}
+              <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-300 to-transparent" />
+              
+              {/* Horizontal Divider for Mobile */}
+              <div className="lg:hidden absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+              
+              {/* Image Side */}
+              <div className="relative lg:sticky lg:top-24 flex items-center h-full">
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl opacity-10 blur-xl" />
+                <div className="relative bg-white rounded-3xl shadow-2xl p-6 w-full">
+                  <img
+                    src="/asset/image/apsie.jpg"
+                    alt="NextDev Solutions Team"
+                    className="rounded-2xl w-full h-auto object-cover"
+                  />
+                </div>
               </div>
-              <div>
-                <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">About Us</span>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-5">
-                  Built from Passion, Driven by Purpose
-                </h2>
-                <p className="text-slate-600 mb-6 leading-relaxed">
-                  NextDev Solutions was founded by <strong>Apsie Tese</strong> in June 2025 with a clear mission: to deliver innovative, reliable, and efficient software solutions that empower businesses and individuals. Whether it's a simple portfolio site or a full-fledged enterprise system, we approach every project with the same level of care, collaboration, and creativity.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {whyUs.map((item) => {
+
+              {/* Content Side */}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                    Our Mission: Your Digital Success
+                  </h3>
+                  <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                    NextDev Solutions delivers enterprise software solutions for
+                    businesses to thrive in the digital age. From custom web applications to 
+                    comprehensive ERP systems, we combine technical excellence with deep understanding 
+                    of local business needs.
+                  </p>
+                </div>
+
+                {/* Key Differentiators */}
+                <div className="space-y-4">
+                  {whyUs.map((item, index) => {
                     const Icon = item.icon;
                     return (
-                      <div key={item.title} className="flex items-start gap-3">
-                        <div className="bg-blue-100 rounded-lg p-2 shrink-0">
-                          <Icon className="h-4 w-4 text-blue-600" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-slate-900 text-sm">{item.title}</p>
-                          <p className="text-slate-500 text-xs mt-0.5">{item.desc}</p>
-                        </div>
-                      </div>
+                      <Collapsible key={item.title}>
+                        <CollapsibleTrigger asChild>
+                          <div className="group cursor-pointer">
+                            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300 border border-slate-100">
+                              <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl p-3 shrink-0 group-hover:scale-110 transition-transform duration-300">
+                                <Icon className="h-5 w-5 text-white" />
+                              </div>
+                              <div className="flex-1 text-left">
+                                <div className="flex items-center justify-between">
+                                  <h4 className="font-bold text-slate-900">{item.title}</h4>
+                                  <ChevronDown className="h-4 w-4 text-slate-400 transition-transform duration-200 group-hover:text-blue-600" />
+                                </div>
+                                <p className="text-slate-600 text-sm leading-relaxed mt-1">{item.desc}</p>
+                              </div>
+                            </div>
+                          </div>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent className="ml-20 mt-2">
+                          <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                            <p className="text-slate-700 text-sm leading-relaxed">
+                              {item.title === "Fresh Perspective" && "As a new company, we bring modern approaches and eagerness to learn about your specific business needs. No old habits — just fresh thinking and current best practices."}
+                              {item.title === "Dedicated Service" && "We value every project and work hard to deliver quality results on time. Building our reputation one client at a time means your satisfaction is our top priority."}
+                              {item.title === "Personal Attention" && "Being a boutique business means you get our full attention and truly personalised service — not a ticket number in a queue."}
+                              
+                            </p>
+                          </div>
+                        </CollapsibleContent>
+                      </Collapsible>
                     );
                   })}
                 </div>
-                <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
-                  <Link to="/about">
-                    Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
+
+                
+                {/* CTA Button */}
+                <div className="pt-4">
+                  <Button 
+                    asChild 
+                    className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <Link to="/about">
+                      Discover Our Full Story <ArrowRight className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Section Divider */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
+        </div>
 
         {/* News Preview */}
         <section className="py-20 bg-gray-100">

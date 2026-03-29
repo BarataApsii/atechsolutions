@@ -80,7 +80,7 @@ const services = [
 
 export function ServicesSectionMinimal() {
   return (
-    <section id="services" className="py-20 bg-gray-50">
+    <section id="services" className="py-20 bg-blue-800">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-4">Our Services</h2>
         <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">

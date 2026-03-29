@@ -61,64 +61,52 @@ export function ServicesSection() {
         {/* Modern gradient cards with hover effects - showing 3 key services */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {services.map((service, index) => (
-            <div key={index} className="group">
+            <Link key={index} to="/services" className="group">
               <div className={`relative h-full bg-gradient-to-br ${
                 service.bgColor === "bg-blue-600" 
-                  ? "from-blue-500 via-blue-600 to-indigo-700" 
+                  ? "from-blue-400 via-blue-500 to-blue-600" 
                   : service.bgColor === "bg-purple-600"
-                  ? "from-purple-500 via-purple-600 to-purple-700"
-                  : "from-green-500 via-green-600 to-emerald-700"
+                  ? "from-blue-400 via-blue-500 to-blue-600"
+                  : "from-blue-400 via-blue-500 to-blue-600"
               } rounded-2xl p-1 transition-all duration-300 hover:scale-105 hover:shadow-2xl`}>
-                <div className="bg-white rounded-2xl h-full p-5 flex flex-col">
+                <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl h-full p-5 flex flex-col text-white">
                   {/* Icon with animated background */}
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${
                     service.bgColor === "bg-blue-600" 
                       ? "bg-gradient-to-br from-blue-100 to-blue-200" 
                       : service.bgColor === "bg-purple-600"
-                      ? "bg-gradient-to-br from-purple-100 to-purple-200"
-                      : "bg-gradient-to-br from-green-100 to-green-200"
+                      ? "bg-gradient-to-br from-blue-100 to-blue-200"
+                      : "bg-gradient-to-br from-blue-100 to-blue-200"
                   } mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <service.icon className={`w-6 h-6 ${
-                      service.bgColor === "bg-blue-600" ? "text-blue-600" : 
-                      service.bgColor === "bg-purple-600" ? "text-purple-600" :
-                      "text-green-600"
-                    }`} />
+                    <service.icon className="w-6 h-6 text-blue-600" />
                   </div>
 
                   {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{service.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 flex-grow">{service.description}</p>
+                  <h3 className="text-lg font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-blue-100 text-sm mb-4 flex-grow">{service.description}</p>
 
                   {/* Feature list - limited to 3 items */}
                   <div className="space-y-2">
                     <ul className="space-y-1">
                       {service.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-xs text-gray-600">
-                          <div className={`w-1 h-1 rounded-full ${
-                            service.bgColor === "bg-blue-600" ? "bg-blue-500" : 
-                            service.bgColor === "bg-purple-600" ? "bg-purple-500" :
-                            "bg-green-500"
-                          } mr-2`} />
+                        <li key={idx} className="flex items-center text-xs text-blue-100">
+                          <div className="w-1 h-1 rounded-full bg-blue-500 mr-2" />
                           {feature}
                         </li>
                       ))}
                     </ul>
                     {service.features.length > 3 && (
-                      <p className="text-xs text-gray-500 italic">+{service.features.length - 3} more features</p>
+                      <p className="text-xs text-blue-200 italic">+{service.features.length - 3} more features</p>
                     )}
                   </div>
 
                   {/* Hover indicator */}
-                  <div className={`mt-4 pt-3 border-t border-gray-100 flex items-center justify-center text-xs font-medium ${
-                    service.bgColor === "bg-blue-600" ? "text-blue-600" : 
-                    service.bgColor === "bg-purple-600" ? "text-purple-600" :
-                    "text-green-600"
-                  } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                  <div className="mt-4 pt-3 border-t border-blue-600 flex items-center justify-center text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     Learn more →
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -126,13 +114,12 @@ export function ServicesSection() {
         <div className="text-center">
           <div className="inline-flex items-center justify-center p-6 bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl border border-blue-100">
             <div className="text-center">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Discover All Our Services</h3>
-              <p className="text-sm text-gray-600 mb-4">From custom ERP solutions to expert IT support - we've got you covered</p>
+              
               <Link 
                 to="/services"
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-300 hover:shadow-lg"
               >
-                See All Services <ArrowRight className="ml-2 h-4 w-4" />
+                See All Our Services <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
           </div>

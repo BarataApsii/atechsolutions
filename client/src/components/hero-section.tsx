@@ -10,7 +10,7 @@ export default function HeroSection() {
     {
       title: "Transform Your Business Digitally",
       subtitle: "Custom web solutions that drive growth and innovation",
-      description: "NextDev Solutions crafts powerful web applications that elevate your business presence and streamline operations.",
+      description: "NextDev Solutions craftsweb applications that elevate your business presence and streamline operations.",
       image: "/asset/hero-slider-images/transform-business.png"
     },
     {
@@ -20,8 +20,8 @@ export default function HeroSection() {
       image: "/asset/hero-slider-images/custom-software.png"
     },
     {
-      title: "24/7 IT Support You Can Count On",
-      subtitle: "Expert technical assistance when you need it most",
+      title: "24/7 IT Support",
+      subtitle: "Technical assistance you can rely on",
       description: "Our dedicated IT support team ensures your systems run smoothly, minimizing downtime and maximizing productivity.",
       image: "/asset/hero-slider-images/it-support.png"
     }
