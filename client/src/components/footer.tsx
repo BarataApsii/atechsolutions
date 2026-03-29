@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { MessageCircle, Mail } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { MessageCircle, Mail, Facebook, Linkedin, Instagram } from "lucide-react";
 
 const serviceLinks = [
   "Web Design & Development",
@@ -18,6 +18,26 @@ const quickLinks = [
 ];
 
 export default function Footer() {
+  const location = useLocation();
+  const pageUrl = typeof window !== "undefined"
+    ? `${window.location.origin}${location.pathname}`
+    : `https://nextdev-png.com${location.pathname}`;
+
+  const shareLinks = [
+    {
+      label: "Share on Facebook",
+      href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`,
+      icon: Facebook,
+      className: "bg-[#1877F2] hover:bg-[#145dbf]",
+    },
+    {
+      label: "Share on LinkedIn",
+      href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}`,
+      icon: Linkedin,
+      className: "bg-[#0A66C2] hover:bg-[#084d96]",
+    },
+  ];
+
   return (
     <footer className="bg-slate-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -117,6 +137,24 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-400 text-base gap-4">
           <p>&copy; 2026 NextDev Solutions. All rights reserved.</p>
+
+          {/* Share Buttons */}
+          <div className="flex items-center gap-2">
+            <span className="text-slate-500 text-sm mr-1">Share:</span>
+            {shareLinks.map(({ label, href, icon: Icon, className }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={label}
+                className={`${className} text-white rounded-lg p-2 transition-all duration-200`}
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
+
           <div className="flex gap-6">
             <Link to="/services" className="hover:text-white transition-colors">Services</Link>
             <Link to="/about" className="hover:text-white transition-colors">About</Link>
