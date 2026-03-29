@@ -8,15 +8,15 @@ export default function HeroSection() {
 
   const slides = [
     {
-      title: "Transform Your Business Digitally",
-      subtitle: "Custom web solutions that drive growth and innovation",
-      description: "NextDev Solutions crafts applications that elevate your business operations.",
+      title: "Transforms Business Digitally",
+      subtitle: "Customized solutions that drive growth and innovation",
+      description: "NextDev Solutions crafts applications that elevate your business runs.",
       image: "/asset/hero-slider-images/transform-business.png"
     },
     {
       title: "ERP Software Solutions",
-      subtitle: "Integrated solutions for efficient business management",
-      description: "Our ERP systems unify your processes, from inventory to finance, giving you complete control and visibility.",
+      subtitle: "Solutions for efficient business management",
+      description: "Our ERP systems unify your processes and streamline operations.",
       image: "/asset/hero-slider-images/custom-software.png"
     },
     {
