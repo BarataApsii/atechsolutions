@@ -95,7 +95,7 @@ export default function Navigation() {
               ))}
               <Button
                 asChild
-                className="bg-blue-600 hover:bg-gray-600 text-white flex items-center gap-2 px-6 py-6 text-base transition-colors duration-300"
+                className="bg-blue-600 hover:bg-gray-600 text-white flex items-center gap-2 px-6 py-2 text-base transition-colors duration-300"
               >
                 <Link to="/contact">
                   Get Started
