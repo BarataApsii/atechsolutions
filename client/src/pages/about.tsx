@@ -87,7 +87,7 @@ export default function AboutPage() {
             }}
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-blue-700/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
           
           {/* Content */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
