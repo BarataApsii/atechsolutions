@@ -104,10 +104,6 @@ export default function Footer() {
                   info@nextdev-png.com
                 </a>
               </li>
-              <li className="flex items-start text-sm">
-                <span className="mr-2 mt-0.5">🌐</span>
-                <span>Global Services Available</span>
-              </li>
               <li className="text-sm">
                 <p className="font-medium">Mon–Fri: 8AM–6PM</p>
                 <p className="font-medium">Sun: Appointment Only</p>
