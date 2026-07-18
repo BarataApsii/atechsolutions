@@ -7,6 +7,7 @@ import Home from "./pages/home";
 import ServicesPage from "./pages/services";
 import AboutPage from "./pages/about";
 import NewsPage from "./pages/news";
+import NewsDetailPage from "./pages/news-detail";
 import ContactPage from "./pages/contact";
 import NotFound from "./pages/not-found";
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:id" element={<NewsDetailPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

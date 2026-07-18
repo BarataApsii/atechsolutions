@@ -12,6 +12,7 @@ import {
   Smartphone,
   Shield,
   Globe,
+  Zap,
 } from "lucide-react";
 
 const newsItems = [
@@ -24,8 +25,7 @@ const newsItems = [
     category: "ICT & Policy",
     icon: Building,
     color: "bg-blue-600",
-    sourceUrl:
-      "https://www.postcourier.com.pg/ict-minister-announces-partnership-with-china-for-enhanced-digital-transformation-in-png/?utm_source=chatgpt.com",
+    sourceUrl: "/news/1",
   },
   {
     id: 2,
@@ -36,8 +36,7 @@ const newsItems = [
     category: "Artificial Intelligence",
     icon: Cpu,
     color: "bg-green-500",
-    sourceUrl:
-      "https://www.postcourier.com.pg/the-2025-ai-summit-shaping-papua-new-guineas-digital-future/?utm_source=chatgpt.com",
+    sourceUrl: "/news/2",
   },
   {
     id: 3,
@@ -48,8 +47,7 @@ const newsItems = [
     category: "Women in Tech",
     icon: Award,
     color: "bg-purple-600",
-    sourceUrl:
-      "https://www.pngbusinessnews.com/articles/2025/3/women-in-tech-business-breakfast-plays-up-innovation-png-awards?utm_source=chatgpt.com",
+    sourceUrl: "/news/3",
   },
   {
     id: 4,
@@ -84,9 +82,21 @@ const newsItems = [
     color: "bg-teal-500",
     sourceUrl: "#",
   },
+  {
+    id: 7,
+    title: "Introducing Media Toolkit — Coming Soon",
+    excerpt:
+      "I'm excited to introduce Media Toolkit — a modern online platform designed to make media compression fast, simple, and efficient. Compress and optimize: Images, Videos, Audio, PDF documents. Whether you're a content creator, photographer, student, freelancer, or business, Media Toolkit will help you reduce file sizes while maintaining quality. Releasing Soon.",
+    date: "July 19, 2026",
+    category: "Product Launch",
+    icon: Zap,
+    color: "bg-orange-500",
+    image: "/asset/image/toolkit.png",
+    sourceUrl: "/news/7",
+  },
 ];
 
-const categories = ["All", "ICT & Policy", "Artificial Intelligence", "Women in Tech", "Telecommunications", "Cybersecurity", "Digital Economy"];
+const categories = ["All", "ICT & Policy", "Artificial Intelligence", "Women in Tech", "Telecommunications", "Cybersecurity", "Digital Economy", "Product Launch"];
 
 export default function NewsPage() {
   return (
@@ -144,17 +154,24 @@ export default function NewsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {newsItems.map((item) => {
                 const IconComponent = item.icon;
-                return (
-                  <Card
-                    key={item.id}
-                    className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 flex flex-col"
-                  >
+                const cardContent = (
+                  <>
                     <CardContent className="p-6 flex flex-col flex-1">
-                      <div
-                        className={`${item.color} rounded-xl w-12 h-12 flex items-center justify-center mb-4 shrink-0`}
-                      >
-                        <IconComponent className="text-white h-6 w-6" />
-                      </div>
+                      {item.image ? (
+                        <div className="mb-4 rounded-xl overflow-hidden">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-48 object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className={`${item.color} rounded-xl w-12 h-12 flex items-center justify-center mb-4 shrink-0`}
+                        >
+                          <IconComponent className="text-white h-6 w-6" />
+                        </div>
+                      )}
 
                       <div className="flex items-center text-xs text-slate-500 mb-3 flex-wrap gap-1">
                         <Calendar className="h-3.5 w-3.5 mr-1" />
@@ -169,21 +186,19 @@ export default function NewsPage() {
 
                       <p className="text-slate-600 mb-5 text-sm leading-relaxed flex-1">{item.excerpt}</p>
 
-                      <a
-                        href={item.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center text-sm font-medium transition-colors ${
-                          item.sourceUrl === "#"
-                            ? "text-slate-400 cursor-not-allowed pointer-events-none"
-                            : "text-blue-600 hover:text-blue-800"
-                        }`}
-                      >
-                        {item.sourceUrl === "#" ? "Source Pending" : "Read Full Article"}
-                        {item.sourceUrl !== "#" && <ArrowRight className="ml-1.5 h-4 w-4" />}
-                      </a>
+                      <div className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
+                        Read Full Article <ArrowRight className="ml-1.5 h-4 w-4" />
+                      </div>
                     </CardContent>
-                  </Card>
+                  </>
+                );
+
+                return (
+                  <Link key={item.id} to={item.sourceUrl} className="block">
+                    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full cursor-pointer border-slate-200 hover:border-blue-300 flex flex-col">
+                      {cardContent}
+                    </Card>
+                  </Link>
                 );
               })}
             </div>

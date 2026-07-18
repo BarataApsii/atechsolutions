@@ -11,7 +11,7 @@ import { useState } from "react";
 import {
   Code, Wrench, Computer, Server, Building,
   ArrowRight, Users, Clock, Headphones, Calendar,
-  Cpu, Award, MessageCircle, Mail, CheckCircle, ChevronDown,
+  Cpu, Award, MessageCircle, Mail, CheckCircle, ChevronDown, Zap,
 } from "lucide-react";
 
 const serviceHighlights = [
@@ -31,33 +31,34 @@ const whyUs = [
 const latestNews = [
   {
     id: 1,
+    title: "Introducing Media Toolkit — Coming Soon",
+    excerpt: "A modern online platform designed to make media compression fast, simple, and efficient. Compress and optimize: Images, Videos, Audio, PDF documents.",
+    date: "July 19, 2026",
+    category: "Product Launch",
+    icon: Zap,
+    color: "bg-orange-500",
+    image: "/asset/image/toolkit.png",
+    sourceUrl: "/news/7",
+  },
+  {
+    id: 2,
     title: "PNG Strengthens Digital Collaboration with China",
     excerpt: "ICT Minister Timothy Masiu signed an MOU with China to boost digital infrastructure and services across PNG.",
     date: "June 3, 2025",
     category: "ICT & Policy",
     icon: Building,
     color: "bg-blue-600",
-    sourceUrl: "https://www.postcourier.com.pg/ict-minister-announces-partnership-with-china-for-enhanced-digital-transformation-in-png/",
+    sourceUrl: "/news/1",
   },
   {
-    id: 2,
+    id: 3,
     title: "AI Summit 2025 Held in Port Moresby",
     excerpt: "The ITI-hosted summit highlighted generative AI, AI in banking, education, and climate — a milestone for PNG tech.",
     date: "April 7, 2025",
     category: "Artificial Intelligence",
     icon: Cpu,
     color: "bg-green-500",
-    sourceUrl: "https://www.postcourier.com.pg/the-2025-ai-summit-shaping-papua-new-guineas-digital-future/",
-  },
-  {
-    id: 3,
-    title: "Women in Tech & Innovation Awards 2025",
-    excerpt: "POMCCI's event spotlighted female tech leaders and shortlisted entries for Innovation PNG 2025.",
-    date: "February 27, 2025",
-    category: "Women in Tech",
-    icon: Award,
-    color: "bg-purple-600",
-    sourceUrl: "https://www.pngbusinessnews.com/articles/2025/3/women-in-tech-business-breakfast-plays-up-innovation-png-awards",
+    sourceUrl: "/news/2",
   },
 ];
 
@@ -219,12 +220,22 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {latestNews.map((item) => {
                 const Icon = item.icon;
-                return (
-                  <Card key={item.id} className="hover:shadow-lg transition-shadow">
+                const cardContent = (
+                  <>
                     <CardContent className="p-6">
-                      <div className={`${item.color} rounded-xl w-11 h-11 flex items-center justify-center mb-4`}>
-                        <Icon className="text-white h-5 w-5" />
-                      </div>
+                      {item.image ? (
+                        <div className="mb-4 rounded-xl overflow-hidden">
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-40 object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className={`${item.color} rounded-xl w-11 h-11 flex items-center justify-center mb-4`}>
+                          <Icon className="text-white h-5 w-5" />
+                        </div>
+                      )}
                       <div className="flex items-center text-xs text-slate-500 mb-2">
                         <Calendar className="h-3.5 w-3.5 mr-1.5" />
                         {item.date}
@@ -233,16 +244,36 @@ export default function Home() {
                       </div>
                       <h3 className="text-base font-semibold text-slate-900 mb-2 leading-snug">{item.title}</h3>
                       <p className="text-slate-600 text-sm mb-4 leading-relaxed">{item.excerpt}</p>
-                      <a
-                        href={item.sourceUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors"
-                      >
-                        Read More <ArrowRight className="ml-1.5 h-4 w-4" />
-                      </a>
+                      <div className="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors">
+                        {item.sourceUrl === "#" ? "Coming Soon" : "Read More"}
+                        {item.sourceUrl !== "#" && <ArrowRight className="ml-1.5 h-4 w-4" />}
+                      </div>
                     </CardContent>
-                  </Card>
+                  </>
+                );
+
+                if (item.sourceUrl.startsWith("/")) {
+                  return (
+                    <Link key={item.id} to={item.sourceUrl} className="block">
+                      <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full cursor-pointer border-slate-200 hover:border-blue-300">
+                        {cardContent}
+                      </Card>
+                    </Link>
+                  );
+                }
+
+                return (
+                  <a
+                    key={item.id}
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`block ${item.sourceUrl === "#" ? "pointer-events-none" : ""}`}
+                  >
+                    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full cursor-pointer border-slate-200 hover:border-blue-300">
+                      {cardContent}
+                    </Card>
+                  </a>
                 );
               })}
             </div>
