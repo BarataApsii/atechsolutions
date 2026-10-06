@@ -196,12 +196,12 @@ export default function NewsDetailPage() {
 
   if (!newsItem) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-transparent text-slate-50">
         <Navigation />
         <main className="py-20">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-3xl font-bold text-slate-900 mb-4">News Article Not Found</h1>
-            <Link to="/news" className="text-blue-600 hover:text-blue-800">
+            <h1 className="text-3xl font-bold text-white mb-4">News Article Not Found</h1>
+            <Link to="/news" className="text-cyan-400 hover:text-cyan-300">
               ← Back to News
             </Link>
           </div>
@@ -215,11 +215,11 @@ export default function NewsDetailPage() {
   const IconComponent = iconMap[newsItem.icon.name];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent text-slate-50">
       <Navigation />
       <main>
         {/* Page Hero */}
-        <section className="relative bg-gradient-to-br from-blue-600 to-blue-700 text-white py-16">
+        <section className="relative bg-gradient-to-br from-cyan-600 to-blue-700 text-white py-16">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: 'url("/asset/image/banner.png")'
@@ -228,7 +228,7 @@ export default function NewsDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-blue-200 mb-3 flex items-center gap-2">
+            <div className="text-sm text-cyan-200 mb-3 flex items-center gap-2">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
               <Link to="/news" className="hover:text-white transition-colors">News & Updates</Link>
@@ -236,7 +236,7 @@ export default function NewsDetailPage() {
               <span className="text-white font-medium">{newsItem.title}</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{newsItem.title}</h1>
-            <div className="flex items-center gap-4 text-blue-100">
+            <div className="flex items-center gap-4 text-cyan-100">
               <div className="flex items-center gap-2">
                 <Calendar className="h-4 w-4" />
                 {newsItem.date}
@@ -271,21 +271,21 @@ export default function NewsDetailPage() {
                 )}
 
                 <div className="prose prose-lg max-w-none">
-                  <p className="text-xl text-slate-700 font-medium mb-6 leading-relaxed">
+                  <p className="text-xl text-slate-300 font-medium mb-6 leading-relaxed">
                     {newsItem.excerpt}
                   </p>
-                  <div className="text-slate-600 leading-relaxed whitespace-pre-line">
+                  <div className="text-slate-400 leading-relaxed whitespace-pre-line">
                     {newsItem.content}
                   </div>
                 </div>
 
                 {newsItem.sourceUrl && newsItem.sourceUrl !== "#" && (
-                  <div className="mt-8 pt-8 border-t border-slate-200">
+                  <div className="mt-8 pt-8 border-t border-slate-800">
                     <a
                       href={newsItem.sourceUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+                      className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium"
                     >
                       Read Original Source <ArrowRight className="h-4 w-4" />
                     </a>
@@ -296,7 +296,7 @@ export default function NewsDetailPage() {
 
             <Link
               to="/news"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-medium"
             >
               <ArrowRight className="h-4 w-4 rotate-180" />
               Back to All News

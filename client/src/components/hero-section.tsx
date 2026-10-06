@@ -1,155 +1,98 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowLeft, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowRight, Cpu, Code, Globe, Shield, Zap } from "lucide-react";
+import NetworkBackground from "./network-background";
+
+const floatingBadges = [
+  { icon: Code, label: "Web Apps", position: "top-[18%] left-[8%]", delay: "0s" },
+  { icon: Cpu, label: "ERP Systems", position: "top-[22%] right-[10%]", delay: "1.2s" },
+  { icon: Shield, label: "IT Support", position: "bottom-[28%] left-[12%]", delay: "2.4s" },
+  { icon: Globe, label: "Cloud", position: "bottom-[24%] right-[8%]", delay: "0.8s" },
+  { icon: Zap, label: "24/7 Help", position: "top-[45%] right-[5%]", delay: "1.8s" },
+];
 
 export default function HeroSection() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      title: "Transforms Business Digitally",
-      subtitle: "Customized solutions that drive growth and innovation",
-      description: "NextDev Solutions crafts applications that elevate your business runs.",
-      image: "/asset/hero-slider-images/transform-business.png"
-    },
-    {
-      title: "ERP Software Solutions",
-      subtitle: "Solutions for efficient business management",
-      description: "Our ERP systems unify your processes and streamline operations.",
-      image: "/asset/hero-slider-images/custom-software.png"
-    },
-    {
-      title: "24/7 IT Support",
-      subtitle: "Technical assistance you can rely on",
-      description: "Our dedicated IT support team ensures your systems run smoothly, minimizing downtime and maximizing productivity.",
-      image: "/asset/hero-slider-images/it-support.png"
-    }
-  ];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 8000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const nextSlide = () => {
-    console.log('Next slide clicked, current:', currentSlide);
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    console.log('Prev slide clicked, current:', currentSlide);
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   return (
-    <section id="hero" className="text-white relative overflow-hidden h-[70vh] sm:h-[75vh]">
-      {/* Background Image Slider */}
-      <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 ease-in-out ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              backgroundImage: `url(${slide.image})`,
-            }}
-          />
-        ))}
-        {/* Overlay for Text Visibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+    <section
+      id="hero"
+      className="relative isolate flex min-h-[calc(100svh)] items-center justify-center overflow-hidden bg-transparent pt-[4.5rem] text-white"
+    >
+      <NetworkBackground />
+
+      {/* Floating tech badges */}
+      <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
+        {floatingBadges.map((badge, index) => {
+          const Icon = badge.icon;
+          return (
+            <div
+              key={index}
+              className={`absolute ${badge.position} flex items-center gap-2 rounded-full border border-slate-700/60 bg-slate-900/70 px-3 py-1.5 text-xs font-medium text-cyan-200 shadow-lg shadow-cyan-900/10 backdrop-blur-md`}
+              style={{ animation: `float 5s ease-in-out ${badge.delay} infinite` }}
+            >
+              <Icon className="h-3.5 w-3.5" />
+              {badge.label}
+            </div>
+          );
+        })}
       </div>
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
-        <div className="flex items-center h-full">
-          <div className="relative max-w-2xl">
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className={`transition-all duration-1000 ease-in-out text-left ${
-                  index === currentSlide ? 'opacity-100 relative' : 'opacity-0 absolute inset-0'
-                }`}
-              >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3 sm:mb-4">
-                  {slide.title}
-                </h1>
-                <p className="text-xl sm:text-2xl text-yellow-300 mb-3 sm:mb-4">
-                  {slide.subtitle}
-                </p>
-                <p className="text-base sm:text-lg mb-6 sm:mb-8 opacity-90">
-                  {slide.description}
-                </p>
-              </div>
-            ))}
-            
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 relative z-30">
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base"
-              >
-                <Link to="/contact">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Contact Us Today
-                </Link>
-              </Button>
 
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="bg-transparent text-yellow-300 border-white hover:bg-white hover:text-blue-600 px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base"
-              >
-                <Link to="/services">
-                  <ArrowRight className="mr-2 h-5 w-5" />
-                  View Services
-                </Link>
-              </Button>
-            </div>
+      <div className="relative z-10 mx-auto max-w-5xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300 backdrop-blur-md">
+          <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.9)]" />
+          Technology partner in Papua New Guinea
+        </div>
 
-            {/* Slider Controls */}
-            <div className="flex items-center gap-2 sm:gap-4 mt-auto pt-2 relative z-20">
-              <button
-                onClick={prevSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer relative z-30"
-                aria-label="Previous slide"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
-              
-              <div className="flex gap-2">
-                {slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all cursor-pointer relative z-30 ${
-                      index === currentSlide 
-                        ? 'bg-yellow-300 w-6 sm:w-8' 
-                        : 'bg-white/50 hover:bg-white/70'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-              
-              <button
-                onClick={nextSlide}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors cursor-pointer relative z-30"
-                aria-label="Next slide"
-              >
-                <ArrowRight className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
+        <h1 className="mx-auto max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+          Software solutions that move your business forward
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">
+          We design and build practical technology — from custom web platforms and ERP systems to hands-on IT support — for organisations across Papua New Guinea.
+        </p>
+
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-full bg-cyan-500 px-7 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all hover:-translate-y-0.5 hover:bg-cyan-400 hover:shadow-xl sm:text-base"
+          >
+            <Link to="/contact">
+              Start a project
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="h-12 rounded-full border-slate-700 bg-slate-900/60 px-7 text-sm font-semibold text-white backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:bg-slate-800 hover:text-cyan-100 sm:text-base"
+          >
+            <Link to="/services">
+              Explore services
+            </Link>
+          </Button>
+        </div>
+
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-500 sm:gap-8 sm:text-sm">
+          <span className="flex items-center gap-1.5">
+            <Code className="h-4 w-4 text-cyan-400" /> Custom web apps
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Cpu className="h-4 w-4 text-cyan-400" /> ERP systems
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Shield className="h-4 w-4 text-cyan-400" /> Reliable IT support
+          </span>
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-12px); }
+        }
+      `}</style>
     </section>
   );
 }

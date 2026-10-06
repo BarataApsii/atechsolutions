@@ -70,7 +70,7 @@ const faqs = [
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent text-slate-50">
       <Navigation />
       <main>
         {/* Page Hero */}
@@ -87,13 +87,13 @@ export default function ContactPage() {
           
           {/* Content */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-blue-200 mb-3 flex items-center gap-2">
+            <div className="text-sm text-cyan-200 mb-3 flex items-center gap-2">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
               <span className="text-white font-medium">Contact</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Get In Touch</h1>
-            <p className="text-xl text-blue-100 max-w-3xl">
+            <p className="text-xl text-cyan-100 max-w-3xl">
               Ready to start a project or have a question? We'd love to hear from you. Choose the contact method that works best for you.
             </p>
           </div>
@@ -108,14 +108,14 @@ export default function ContactPage() {
                 return (
                   <div
                     key={option.title}
-                    className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8 text-center flex flex-col items-center"
+                    className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-8 text-center flex flex-col items-center"
                   >
                     <div className={`${option.color} rounded-2xl p-4 mb-5`}>
                       <Icon className="h-8 w-8 text-white" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">{option.title}</h3>
-                    <p className="text-slate-500 text-sm mb-3">{option.subtitle}</p>
-                    <p className="text-slate-800 font-semibold mb-5">{option.value}</p>
+                    <h3 className="text-xl font-bold text-white mb-1">{option.title}</h3>
+                    <p className="text-slate-400 text-sm mb-3">{option.subtitle}</p>
+                    <p className="text-slate-100 font-semibold mb-5">{option.value}</p>
                     {option.href && option.linkLabel && (
                       <a
                         href={option.href}
@@ -135,17 +135,17 @@ export default function ContactPage() {
             {/* Two Column: Enquiry Info + Hours */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* Service Enquiry */}
-              <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">Start a Project Enquiry</h2>
-                <p className="text-slate-600 text-sm mb-6">
+              <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Start a Project Enquiry</h2>
+                <p className="text-slate-400 text-sm mb-6">
                   When you contact us, it helps to include the following information so we can give you an accurate quote quickly:
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-2">1. Which service are you interested in?</h4>
+                    <h4 className="font-semibold text-slate-100 mb-2">1. Which service are you interested in?</h4>
                     <ul className="space-y-1.5">
                       {services.map((s) => (
-                        <li key={s} className="flex items-center gap-2 text-slate-600 text-sm">
+                        <li key={s} className="flex items-center gap-2 text-slate-400 text-sm">
                           <span className="w-2 h-2 bg-blue-600 rounded-full shrink-0" />
                           {s}
                         </li>
@@ -153,16 +153,16 @@ export default function ContactPage() {
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-1">2. Brief description of your project</h4>
-                    <p className="text-slate-500 text-sm">What do you need built or fixed? Who is it for?</p>
+                    <h4 className="font-semibold text-slate-100 mb-1">2. Brief description of your project</h4>
+                    <p className="text-slate-400 text-sm">What do you need built or fixed? Who is it for?</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-1">3. Your timeline</h4>
-                    <p className="text-slate-500 text-sm">When do you need it completed? Any deadlines?</p>
+                    <h4 className="font-semibold text-slate-100 mb-1">3. Your timeline</h4>
+                    <p className="text-slate-400 text-sm">When do you need it completed? Any deadlines?</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-slate-800 mb-1">4. Your budget (optional)</h4>
-                    <p className="text-slate-500 text-sm">Even a rough range helps us tailor the right solution for you.</p>
+                    <h4 className="font-semibold text-slate-100 mb-1">4. Your budget (optional)</h4>
+                    <p className="text-slate-400 text-sm">Even a rough range helps us tailor the right solution for you.</p>
                   </div>
                 </div>
                 <div className="mt-8 flex flex-col sm:flex-row gap-3">
@@ -188,12 +188,12 @@ export default function ContactPage() {
               {/* Hours + FAQ */}
               <div className="space-y-6">
                 {/* Business Hours */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
+                <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-8">
                   <div className="flex items-center gap-3 mb-5">
-                    <div className="bg-blue-100 rounded-xl p-2.5">
-                      <Clock className="h-5 w-5 text-blue-600" />
+                    <div className="bg-slate-800 rounded-xl p-2.5">
+                      <Clock className="h-5 w-5 text-cyan-400" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">Business Hours</h3>
+                    <h3 className="text-xl font-bold text-white">Business Hours</h3>
                   </div>
                   <div className="space-y-3">
                     {[
@@ -201,10 +201,10 @@ export default function ContactPage() {
                       { day: "Saturday", hours: "9:00 AM – 1:00 PM", note: "By appointment" },
                       { day: "Sunday", hours: "Closed", note: "Emergency only" },
                     ].map((row) => (
-                      <div key={row.day} className="flex justify-between items-center py-2 border-b border-slate-100 last:border-0">
-                        <span className="text-slate-700 font-medium text-sm">{row.day}</span>
+                      <div key={row.day} className="flex justify-between items-center py-2 border-b border-slate-800 last:border-0">
+                        <span className="text-slate-300 font-medium text-sm">{row.day}</span>
                         <div className="text-right">
-                          <span className="text-slate-900 text-sm font-semibold">{row.hours}</span>
+                          <span className="text-white text-sm font-semibold">{row.hours}</span>
                           {row.note && <p className="text-xs text-slate-400">{row.note}</p>}
                         </div>
                       </div>
@@ -214,13 +214,13 @@ export default function ContactPage() {
                 </div>
 
                 {/* FAQ */}
-                <div className="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
-                  <h3 className="text-xl font-bold text-slate-900 mb-5">Frequently Asked Questions</h3>
+                <div className="bg-slate-900 rounded-2xl shadow-sm border border-slate-800 p-8">
+                  <h3 className="text-xl font-bold text-white mb-5">Frequently Asked Questions</h3>
                   <div className="space-y-5">
                     {faqs.map((faq) => (
                       <div key={faq.q}>
-                        <h4 className="font-semibold text-slate-800 text-sm mb-1">{faq.q}</h4>
-                        <p className="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
+                        <h4 className="font-semibold text-slate-100 text-sm mb-1">{faq.q}</h4>
+                        <p className="text-slate-400 text-sm leading-relaxed">{faq.a}</p>
                       </div>
                     ))}
                   </div>

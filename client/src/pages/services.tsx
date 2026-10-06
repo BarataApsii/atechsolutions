@@ -33,9 +33,9 @@ const services = [
       "Cross-Browser Compatibility",
     ],
     color: "bg-blue-600",
-    lightColor: "bg-blue-50",
-    textColor: "text-blue-600",
-    borderColor: "border-blue-200",
+    lightColor: "bg-slate-800",
+    textColor: "text-cyan-400",
+    borderColor: "border-slate-700",
   },
   {
     id: "website-support",
@@ -55,9 +55,9 @@ const services = [
       "24/7 Emergency Support",
     ],
     color: "bg-green-600",
-    lightColor: "bg-green-50",
-    textColor: "text-green-600",
-    borderColor: "border-green-200",
+    lightColor: "bg-slate-800/60",
+    textColor: "text-emerald-400",
+    borderColor: "border-slate-700",
   },
   {
     id: "hardware-software",
@@ -77,9 +77,9 @@ const services = [
       "Remote & On-Site Support",
     ],
     color: "bg-blue-600",
-    lightColor: "bg-blue-50",
-    textColor: "text-blue-600",
-    borderColor: "border-blue-200",
+    lightColor: "bg-slate-800",
+    textColor: "text-cyan-400",
+    borderColor: "border-slate-700",
   },
   {
     id: "hosting-consultation",
@@ -99,9 +99,9 @@ const services = [
       "Ongoing Monitoring Support",
     ],
     color: "bg-green-600",
-    lightColor: "bg-green-50",
-    textColor: "text-green-600",
-    borderColor: "border-green-200",
+    lightColor: "bg-slate-800/60",
+    textColor: "text-emerald-400",
+    borderColor: "border-slate-700",
   },
   {
     id: "erp-solutions",
@@ -121,16 +121,16 @@ const services = [
       "Manufacturing, Transport & Logistics",
     ],
     color: "bg-green-600",
-    lightColor: "bg-green-50",
-    textColor: "text-green-600",
-    borderColor: "border-green-200",
+    lightColor: "bg-slate-800/60",
+    textColor: "text-emerald-400",
+    borderColor: "border-slate-700",
     twoColumnFeatures: true,
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent text-slate-50">
       <Navigation />
       <main>
         {/* Page Hero */}
@@ -147,13 +147,13 @@ export default function ServicesPage() {
           
           {/* Content */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-blue-200 mb-3 flex items-center gap-2">
+            <div className="text-sm text-cyan-200 mb-3 flex items-center gap-2">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
               <span className="text-white font-medium">Services</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-            <p className="text-xl text-blue-100 max-w-3xl">
+            <p className="text-xl text-cyan-100 max-w-3xl">
               From web development to custom ERP systems — we deliver end-to-end technology solutions for businesses and organisations of every size.
             </p>
           </div>
@@ -178,9 +178,9 @@ export default function ServicesPage() {
                     <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${service.color} mb-5`}>
                       <IconComponent className="h-7 w-7 text-white" />
                     </div>
-                    <h2 className="text-3xl font-bold text-slate-900 mb-2">{service.title}</h2>
+                    <h2 className="text-3xl font-bold text-white mb-2">{service.title}</h2>
                     <p className={`text-lg font-medium ${service.textColor} mb-4`}>{service.tagline}</p>
-                    <p className="text-slate-600 mb-6 leading-relaxed">{service.description}</p>
+                    <p className="text-slate-400 mb-6 leading-relaxed">{service.description}</p>
                     <Button asChild className={`${service.color} hover:opacity-90 text-white`}>
                       <Link to="/contact">
                         Get a Free Quote <ArrowRight className="ml-2 h-4 w-4" />
@@ -190,7 +190,7 @@ export default function ServicesPage() {
 
                   {/* Features Side */}
                   <div className={`${service.lightColor} border ${service.borderColor} rounded-2xl p-8 ${isEven ? "" : "lg:order-1"}`}>
-                    <h3 className="text-lg font-semibold text-slate-800 mb-5">What's Included</h3>
+                    <h3 className="text-lg font-semibold text-slate-100 mb-5">What's Included</h3>
                     <ul
                       className={`${
                         service.twoColumnFeatures
@@ -201,7 +201,7 @@ export default function ServicesPage() {
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
                           <CheckCircle className={`h-5 w-5 ${service.textColor} shrink-0 mt-0.5`} />
-                          <span className="text-slate-700 text-sm">{feature}</span>
+                          <span className="text-slate-300 text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -213,22 +213,22 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Banner */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
+        <section className="py-16 bg-gradient-to-r from-cyan-600 to-blue-700">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Not sure which service you need?
             </h2>
-            <p className="text-blue-100 text-lg mb-8">
+            <p className="text-cyan-100 text-lg mb-8">
               Contact us and we'll help you figure out the best solution for your business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-green-500 hover:bg-green-600 text-white px-8">
+              <Button asChild size="lg" className="bg-slate-800/600 hover:bg-green-600 text-white px-8">
                 <a href="https://wa.me/67571570096" target="_blank" rel="noopener noreferrer">
                   <MessageCircle className="mr-2 h-5 w-5" />
                   WhatsApp Us
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-gray-700 hover:bg-white hover:text-blue-600 px-8">
+              <Button asChild size="lg" variant="outline" className="border-white text-slate-300 hover:bg-slate-900 hover:text-cyan-400 px-8">
                 <Link to="/contact">
                   Send an Enquiry
                 </Link>

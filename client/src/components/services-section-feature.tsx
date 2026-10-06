@@ -22,7 +22,7 @@ const services = [
       "Regular Updates & Maintenance",
     ],
     bgColor: "bg-blue-600",
-    lightColor: "bg-blue-50",
+    lightColor: "bg-slate-800",
   },
   {
     icon: Wrench,
@@ -38,7 +38,7 @@ const services = [
       "24/7 Support",
     ],
     bgColor: "bg-green-600",
-    lightColor: "bg-green-50",
+    lightColor: "bg-slate-800",
   },
   {
     icon: Computer,
@@ -54,7 +54,7 @@ const services = [
       "Security Configuration",
     ],
     bgColor: "bg-purple-600",
-    lightColor: "bg-purple-50",
+    lightColor: "bg-slate-800",
   },
   {
     icon: Server,
@@ -70,7 +70,7 @@ const services = [
       "Ongoing Support",
     ],
     bgColor: "bg-orange-600",
-    lightColor: "bg-orange-50",
+    lightColor: "bg-slate-800",
   },
   {
     icon: Building,
@@ -83,7 +83,7 @@ const services = [
       "Retail Stores", "Manufacturing", "Transport", "Logistics",
     ],
     bgColor: "bg-teal-600",
-    lightColor: "bg-teal-50",
+    lightColor: "bg-slate-800",
     twoColumnFeatures: true,
   },
 ];
@@ -93,8 +93,8 @@ export function ServicesSectionFeature() {
     <section id="services" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold text-white mb-4">Our Services</h2>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto">
             End-to-end technology solutions designed to help your business thrive in the digital age
           </p>
         </div>
@@ -114,13 +114,13 @@ export function ServicesSectionFeature() {
                       <service.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold text-gray-900">{service.title}</h3>
+                      <h3 className="text-2xl font-bold text-white">{service.title}</h3>
                       <p className={`text-sm font-medium ${service.bgColor.replace('bg-', 'text-')} mt-1`}>
                         {service.tagline}
                       </p>
                     </div>
                   </div>
-                  <p className="text-gray-600 mb-6">{service.description}</p>
+                  <p className="text-slate-400 mb-6">{service.description}</p>
                   <button className={`inline-flex items-center px-4 py-2 rounded-lg ${service.bgColor} text-white font-medium hover:opacity-90 transition-opacity duration-300`}>
                     Learn more <ArrowRight className="w-4 h-4 ml-2" />
                   </button>
@@ -128,8 +128,8 @@ export function ServicesSectionFeature() {
 
                 {/* Features grid */}
                 <div className={`lg:col-span-2 ${index % 2 === 1 ? 'lg:col-start-3' : ''}`}>
-                  <div className={`${service.lightColor} rounded-xl p-6 border border-gray-100`}>
-                    <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
+                  <div className={`${service.lightColor} rounded-xl p-6 border border-slate-800`}>
+                    <h4 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
                       Key Features & Capabilities
                     </h4>
                     <div className={`${
@@ -144,7 +144,7 @@ export function ServicesSectionFeature() {
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
                           </div>
-                          <span className="text-sm text-gray-700">{feature}</span>
+                          <span className="text-sm text-slate-300">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -154,7 +154,7 @@ export function ServicesSectionFeature() {
               
               {/* Divider between services */}
               {index < services.length - 1 && (
-                <div className="mt-12 border-t border-gray-100"></div>
+                <div className="mt-12 border-t border-slate-800"></div>
               )}
             </div>
           ))}

@@ -74,6 +74,16 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  html.dark body {
+    background-color: #020617;
+    background-image:
+      radial-gradient(ellipse at 50% 0%, rgba(8, 145, 178, 0.18), transparent 55%),
+      radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.13), transparent 40%),
+      radial-gradient(circle at 20% 80%, rgba(34, 211, 238, 0.10), transparent 40%);
+    background-attachment: fixed;
+    background-size: cover;
+  }
 }
 
 /* NextDev Solutions Custom Colors */

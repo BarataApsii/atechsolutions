@@ -100,11 +100,11 @@ const categories = ["All", "ICT & Policy", "Artificial Intelligence", "Women in 
 
 export default function NewsPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent text-slate-50">
       <Navigation />
       <main>
         {/* Page Hero */}
-        <section className="relative bg-gradient-to-br from-blue-600 to-blue-700 text-white py-16">
+        <section className="relative bg-gradient-to-br from-cyan-600 to-blue-700 text-white py-16">
           {/* Banner Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -116,20 +116,20 @@ export default function NewsPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
           
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-sm text-blue-200 mb-3 flex items-center gap-2">
+            <div className="text-sm text-cyan-200 mb-3 flex items-center gap-2">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <span>/</span>
               <span className="text-white font-medium">News & Updates</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">News & Insights</h1>
-            <p className="text-xl text-blue-100 max-w-3xl">
+            <p className="text-xl text-cyan-100 max-w-3xl">
               Stay updated with the latest technology news, industry trends, and insights relevant to businesses in Papua New Guinea and the Pacific.
             </p>
           </div>
         </section>
 
         {/* Category Pills */}
-        <section className="bg-white border-b border-slate-200 py-4 sticky top-[72px] z-40">
+        <section className="bg-slate-950/70 backdrop-blur-md py-4 sticky top-[72px] z-40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
@@ -138,7 +138,7 @@ export default function NewsPage() {
                   className={`px-4 py-1.5 rounded-full text-sm font-medium cursor-default transition-colors ${
                     cat === "All"
                       ? "bg-blue-600 text-white"
-                      : "bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-blue-600"
+                      : "bg-slate-800 text-slate-400 hover:bg-slate-700 hover:text-cyan-400"
                   }`}
                 >
                   {cat}
@@ -173,20 +173,20 @@ export default function NewsPage() {
                         </div>
                       )}
 
-                      <div className="flex items-center text-xs text-slate-500 mb-3 flex-wrap gap-1">
+                      <div className="flex items-center text-xs text-slate-400 mb-3 flex-wrap gap-1">
                         <Calendar className="h-3.5 w-3.5 mr-1" />
                         {item.date}
                         <span className="mx-1">•</span>
-                        <span className="text-blue-600 font-semibold">{item.category}</span>
+                        <span className="text-cyan-400 font-semibold">{item.category}</span>
                       </div>
 
-                      <h3 className="text-lg font-semibold text-slate-900 mb-3 leading-snug">
+                      <h3 className="text-lg font-semibold text-white mb-3 leading-snug">
                         {item.title}
                       </h3>
 
-                      <p className="text-slate-600 mb-5 text-sm leading-relaxed flex-1">{item.excerpt}</p>
+                      <p className="text-slate-400 mb-5 text-sm leading-relaxed flex-1">{item.excerpt}</p>
 
-                      <div className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors">
+                      <div className="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors">
                         Read Full Article <ArrowRight className="ml-1.5 h-4 w-4" />
                       </div>
                     </CardContent>
@@ -195,7 +195,7 @@ export default function NewsPage() {
 
                 return (
                   <Link key={item.id} to={item.sourceUrl} className="block">
-                    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full cursor-pointer border-slate-200 hover:border-blue-300 flex flex-col">
+                    <Card className="hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full cursor-pointer border-slate-800 hover:border-cyan-500/50 flex flex-col">
                       {cardContent}
                     </Card>
                   </Link>
@@ -206,10 +206,10 @@ export default function NewsPage() {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="py-16 bg-white border-t border-slate-200">
+        <section className="py-16">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-slate-900 mb-3">Stay in the Loop</h2>
-            <p className="text-slate-600 mb-6">
+            <h2 className="text-2xl font-bold text-white mb-3">Stay in the Loop</h2>
+            <p className="text-slate-400 mb-6">
               Want to be notified when we publish new insights and company updates? Reach out to us and we'll keep you informed.
             </p>
             <Link
